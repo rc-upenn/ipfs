@@ -5,15 +5,15 @@ def pin_to_ipfs(data):
 	assert isinstance(data,dict), f"Error pin_to_ipfs expects a dictionary"
 	jwt = os.getenv("PINATA_JWT")
 	if not jwt:
-        raise RuntimeError("PINATA_JWT not set, so cid can’t be created.")
+		raise RuntimeError("PINATA_JWT not set, so cid can’t be created.")
 
-    r = requests.post(
-        "https://api.pinata.cloud/pinning/pinJSONToIPFS",
-        headers={"Authorization": f"Bearer {jwt}", "Content-Type": "application/json"},
-        json=data,
-        timeout=30
+	r = requests.post(
+		"https://api.pinata.cloud/pinning/pinJSONToIPFS",
+		headers={"Authorization": f"Bearer {jwt}", "Content-Type": "application/json"},
+    	json=data,
+    	timeout=30
     )
-    r.raise_for_status()
+	r.raise_for_status()
 
     cid = r.json()["IpfsHash"]
     return cid

@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 def pin_to_ipfs(data):
 	assert isinstance(data,dict), f"Error pin_to_ipfs expects a dictionary"
@@ -27,4 +28,5 @@ def get_from_ipfs(cid,content_type="json"):
 		data = json.loads(r.content.decode("utf-8"))
 	assert isinstance(data, dict), "get_from_ipfs should return a dict"
 	return data
+
 

@@ -20,12 +20,11 @@ def pin_to_ipfs(data):
 def get_from_ipfs(cid,content_type="json"):
 	assert isinstance(cid,str), f"get_from_ipfs accepts a cid in the form of a string"
 	r = requests.get(f"https://ipfs.io/ipfs/{cid}", timeout=30)
-    r.raise_for_status()
-
-    if content_type == "json":
-        data = r.json()
-    else:
-        data = json.loads(r.content.decode("utf-8"))
+	r.raise_for_status()
+	if content_type == "json":
+    	data = r.json()
+	else:
+		data = json.loads(r.content.decode("utf-8"))
 
     assert isinstance(data, dict), "get_from_ipfs should return a dict"
     return data

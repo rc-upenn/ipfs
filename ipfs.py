@@ -36,7 +36,7 @@ def _try_extract_jwt_from_json_text(txt: str):
 
 def _get_pinata_jwt():
     # 1) env var
-    jwt = os.getenv("PINATA_JWT")
+    jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIyMDZlNWU3Yi05NzI4LTQxYzYtOWM0MS0wNTg0NWViM2Q0NTIiLCJlbWFpbCI6InJ3aWxsZUBzZWFzLnVwZW5uLmVkdSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6IkZSQTEifSx7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6Ik5ZQzEifV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJhNzVkOTkxNzc0YmFmNDI4NTIwYSIsInNjb3BlZEtleVNlY3JldCI6IjY5ODJlNmNmMmQ0ZWY2NzJjZjhmMDI0MmQ4YzQwODRkNTQ2YjQwNjUwOTY5OTI3ZGE5NzYyM2QyNTc4ZDVhNDkiLCJleHAiOjE4MDQwMjg2NjV9.fNHVS4LD-qXuw8BSaLQlAnGoJIe0WolKS1POmeDCU1U"
     if isinstance(jwt, str) and jwt.strip():
         return jwt.strip()
 
@@ -128,3 +128,4 @@ def get_from_ipfs(cid, content_type="json"):
             last_err = e
 
     raise RuntimeError(f"Failed to fetch {cid} from IPFS gateways. Last error: {last_err}")
+
